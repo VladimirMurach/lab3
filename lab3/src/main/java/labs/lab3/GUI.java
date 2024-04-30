@@ -15,7 +15,7 @@ import javax.swing.tree.DefaultTreeModel;
  * @author Владимир
  */
 public class GUI extends javax.swing.JFrame {
-    
+
     private Manager manager;
     private JFileChooser fileChooser;
     DefaultTreeModel model;
@@ -116,10 +116,14 @@ public class GUI extends javax.swing.JFrame {
 
     private void treeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_treeButtonActionPerformed
         ArrayList<ReactorType> reactorTypes = manager.getReactorTypes();
-        for (ReactorType reactorType : reactorTypes) {
-            reactors.add(createNode(reactorType));
+        try {
+            for (ReactorType reactorType : reactorTypes) {
+                reactors.add(createNode(reactorType));
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Ничего не прочитано");
         }
-        model = (DefaultTreeModel)reactorTree.getModel();
+        model = (DefaultTreeModel) reactorTree.getModel();
         model.setRoot(reactors);
         reactorTree.setModel(model);
     }//GEN-LAST:event_treeButtonActionPerformed
@@ -168,11 +172,11 @@ public class GUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void load() {
-        model = (DefaultTreeModel)reactorTree.getModel();
+        model = (DefaultTreeModel) reactorTree.getModel();
         model.setRoot(reactors);
         reactorTree.setModel(model);
     }
-    
+
     private DefaultMutableTreeNode createNode(ReactorType reactorType) {
         DefaultMutableTreeNode node = new DefaultMutableTreeNode(reactorType.getType());
         node.add(new DefaultMutableTreeNode("Burnup: " + reactorType.getBurnup()));

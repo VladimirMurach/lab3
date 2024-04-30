@@ -47,5 +47,40 @@ public class ReactorType {
     public String getSource() {
         return source;
     }
-    
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setBurnup(double burnup) {
+        this.burnup = burnup;
+    }
+
+    public void setKpd(double kpd) {
+        this.kpd = kpd;
+    }
+
+    public void setEnrichment(double enrichment) {
+        this.enrichment = enrichment;
+    }
+
+    public void setThermalCapacity(int thermalCapacity) {
+        this.thermalCapacity = thermalCapacity;
+    }
+
+    public void setElectricalCapacity(double electricalCapacity) {
+        this.electricalCapacity = electricalCapacity;
+    }
+
+    public void setLifeTime(int lifeTime) {
+        this.lifeTime = lifeTime;
+    }
+
+    public void setFirstLoad(double firstLoad) {
+        this.firstLoad = firstLoad;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 }
