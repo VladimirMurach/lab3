@@ -1,4 +1,4 @@
-package labs.lab3;
+package lab3;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;

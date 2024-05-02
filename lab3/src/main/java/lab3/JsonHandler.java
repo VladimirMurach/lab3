@@ -1,15 +1,15 @@
-package labs.lab3;
+package lab3;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class YamlHandler extends Handler {
+public class JsonHandler extends Handler {
 
-    private YamlReader reader = new YamlReader();
+    private JsonReader reader = new JsonReader();
 
     @Override
     public ArrayList<ReactorType> handle(File file) {
-        if (findExtension(file).equals(".yaml")) {
+        if (findExtension(file).equals(".json")) {
             return reader.read(file);
         } else if (next != null) {
             return next.handle(file);
