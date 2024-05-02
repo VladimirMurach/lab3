@@ -9,9 +9,9 @@ public class Manager {
 
     public void importFile(File file) {
 
-        Handler xmlHandler = new XmlHandler();
-        Handler yamlHandler = new YamlHandler();
-        Handler jsonHandler = new JsonHandler();
+        Handler xmlHandler = new Handler(".xml", new MyXmlReader());
+        Handler yamlHandler = new Handler(".yaml", new YamlReader());
+        Handler jsonHandler = new Handler(".json", new JsonReader());
         xmlHandler.setNext(yamlHandler);
         yamlHandler.setNext(jsonHandler);
         storage.setReactorTypes(xmlHandler.handle(file));

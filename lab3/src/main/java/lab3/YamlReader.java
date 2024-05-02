@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
-class YamlReader {
+class YamlReader implements Reader {
 
-    ArrayList<ReactorType> read(File file) {
+    @Override
+    public ArrayList<ReactorType> read(File file) {
 
         ArrayList<ReactorType> reactorTypes = new ArrayList<>();
         try {

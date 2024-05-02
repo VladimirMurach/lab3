@@ -11,9 +11,10 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-public class MyXmlReader {
+public class MyXmlReader implements Reader {
 
-    ArrayList<ReactorType> read(File file) {
+    @Override
+    public ArrayList<ReactorType> read(File file) {
         ArrayList<ReactorType> reactorTypes = new ArrayList<>();
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         ReactorType reactorType = null;

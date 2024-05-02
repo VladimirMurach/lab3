@@ -3,10 +3,17 @@ package lab3;
 import java.io.File;
 import java.util.ArrayList;
 
-public abstract class Handler {
+public class Handler {
 
-    protected Handler next;
+    private Handler next;
+    private String readerExtension;
+    private Reader reader;
 
+    public Handler(String readerExtension, Reader reader) {
+        this.readerExtension = readerExtension;
+        this.reader = reader;
+    }
+    
     public void setNext(Handler next) {
         this.next = next;
     }
@@ -18,5 +25,13 @@ public abstract class Handler {
         return extension;
     }
 
-    public abstract ArrayList<ReactorType> handle(File file);
+    public ArrayList<ReactorType> handle(File file) {
+        if (findExtension(file).equals(readerExtension)) {
+            return reader.read(file);
+        } else if (next != null) {
+            return next.handle(file);
+        } else {
+            return null;
+        }
+    }
 }

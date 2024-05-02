@@ -5,9 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-class JsonReader {
+class JsonReader implements Reader {
 
-    ArrayList<ReactorType> read(File file) {
+    @Override
+    public ArrayList<ReactorType> read(File file) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         ArrayList<ReactorType> reactorTypes = new ArrayList<>();
