@@ -18,7 +18,7 @@ public class Handler {
         this.next = next;
     }
     
-    protected String findExtension(File file) {
+    private String findExtension(File file) {
         String fileName = file.getName();
         int dotIndex = fileName.lastIndexOf('.');
         String extension = (dotIndex == -1) ? "" : fileName.substring(dotIndex);
