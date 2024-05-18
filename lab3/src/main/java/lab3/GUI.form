@@ -30,6 +30,10 @@
                   <Component id="exitButton" max="32767" attributes="0"/>
                   <Component id="importButton" max="32767" attributes="0"/>
                   <Component id="treeButton" pref="136" max="32767" attributes="0"/>
+                  <Component id="databaseButton" max="32767" attributes="0"/>
+                  <Component id="regionButton" max="32767" attributes="0"/>
+                  <Component id="countryButton" max="32767" attributes="0"/>
+                  <Component id="operatorButton" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -39,10 +43,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jScrollPane1" alignment="0" pref="480" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="importButton" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="treeButton" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="databaseButton" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="regionButton" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="countryButton" min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="operatorButton" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="exitButton" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -85,6 +97,26 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="treeButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="databaseButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Database"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="regionButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Region"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="countryButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Country"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="operatorButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Operator"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

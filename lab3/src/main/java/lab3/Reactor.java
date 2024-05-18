@@ -1,9 +1,9 @@
 package lab3;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 public class Reactor {
-    
+
     private String name;
     private ReactorType type;
     private String country;
@@ -11,7 +11,8 @@ public class Reactor {
     private String owner;
     private int thermalCapacity;
     private String region;
-    private ArrayList<Double> loadFactor;
+    private Map<Integer, Double> loadFactor;
+    private Map<Integer, Double> fuelLoad;
 
     public String getName() {
         return name;
@@ -69,13 +70,20 @@ public class Reactor {
         this.region = region;
     }
 
-    public ArrayList<Double> getLoadFactor() {
+    public Map<Integer, Double> getLoadFactor() {
         return loadFactor;
     }
 
-    public void setLoadFactor(ArrayList<Double> loadFactor) {
+    public void setLoadFactor(Map<Integer, Double> loadFactor) {
         this.loadFactor = loadFactor;
     }
-    
+
+    public Map<Integer, Double> getFuelLoad() {
+        return fuelLoad;
+    }
+
+    public void setFuelLoad(Map<Integer, Double> fuelLoad) {
+        this.fuelLoad = fuelLoad;
+    }
     
 }
