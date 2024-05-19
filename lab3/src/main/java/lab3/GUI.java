@@ -6,7 +6,9 @@ package lab3;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Map;
 import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -48,6 +50,10 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        aggregationWindow = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        aggregationTable = new javax.swing.JTable();
+        closeButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         reactorTree = new javax.swing.JTree();
         exitButton = new javax.swing.JButton();
@@ -57,6 +63,61 @@ public class GUI extends javax.swing.JFrame {
         regionButton = new javax.swing.JButton();
         countryButton = new javax.swing.JButton();
         operatorButton = new javax.swing.JButton();
+
+        aggregationTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "Объем ежегодной загрузки, т", "Год"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(aggregationTable);
+        if (aggregationTable.getColumnModel().getColumnCount() > 0) {
+            aggregationTable.getColumnModel().getColumn(1).setMinWidth(100);
+            aggregationTable.getColumnModel().getColumn(2).setMaxWidth(50);
+        }
+
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout aggregationWindowLayout = new javax.swing.GroupLayout(aggregationWindow.getContentPane());
+        aggregationWindow.getContentPane().setLayout(aggregationWindowLayout);
+        aggregationWindowLayout.setHorizontalGroup(
+            aggregationWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aggregationWindowLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        aggregationWindowLayout.setVerticalGroup(
+            aggregationWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aggregationWindowLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(closeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,16 +242,20 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_databaseButtonActionPerformed
 
     private void regionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionButtonActionPerformed
-        manager.aggregateByRegion();
+        createTable("Регион", manager.aggregateByRegion());
     }//GEN-LAST:event_regionButtonActionPerformed
 
     private void countryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryButtonActionPerformed
-        manager.aggregateByCountry();
+        createTable("Страна", manager.aggregateByCountry());
     }//GEN-LAST:event_countryButtonActionPerformed
 
     private void operatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operatorButtonActionPerformed
-        manager.aggregateByOperator();
+        createTable("Оператор", manager.aggregateByOperator());
     }//GEN-LAST:event_operatorButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        aggregationWindow.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,11 +293,15 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable aggregationTable;
+    private javax.swing.JDialog aggregationWindow;
+    private javax.swing.JButton closeButton;
     private javax.swing.JButton countryButton;
     private javax.swing.JButton databaseButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton importButton;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton operatorButton;
     private javax.swing.JTree reactorTree;
     private javax.swing.JButton regionButton;
@@ -256,5 +325,41 @@ public class GUI extends javax.swing.JFrame {
         node.add(new DefaultMutableTreeNode("First load: " + reactorType.getFirstLoad()));
         node.add(new DefaultMutableTreeNode("Source: " + reactorType.getSource()));
         return node;
+    }
+
+    private void createTable(String title, Map<String, Map<Integer, Double>> map) {
+        if (map != null) {
+            aggregationTable.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        title, "Объем ежегодной загрузки, т", "Год"
+                    }
+            ) {
+                Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                };
+                boolean[] canEdit = new boolean[]{
+                    false, false, false
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+            DefaultTableModel model = (DefaultTableModel) aggregationTable.getModel();
+            for (Map.Entry<String, Map<Integer, Double>> entry : map.entrySet()) {
+                Map<Integer, Double> fuelLoad = entry.getValue();
+                for (Map.Entry<Integer, Double> load : fuelLoad.entrySet()) {
+                    model.addRow(new Object[]{entry.getKey(), Math.round(load.getValue()), load.getKey()});
+                }
+            }
+            aggregationTable.getColumnModel().getColumn(2).setMaxWidth(50);
+            aggregationWindow.setSize(480, 500);
+            aggregationWindow.setVisible(rootPaneCheckingEnabled);
+        }
     }
 }
