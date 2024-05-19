@@ -1,6 +1,7 @@
 package lab3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Reactor {
@@ -13,7 +14,7 @@ public class Reactor {
     private int thermalCapacity;
     private String region;
     private Map<Integer, Double> loadFactor;
-    private Map<Integer, Double> fuelLoad;
+    private Map<Integer, Double> fuelLoad = new HashMap<>();
 
     public String getName() {
         return name;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Manager {
 
     private Storage storage = new Storage();
+    private Calculator calculator = new Calculator();
 
     public void importFile(File file) {
 
@@ -25,6 +26,8 @@ public class Manager {
         DatabaseReader reader = new DatabaseReader();
         if (storage.getReactorTypes() != null) {
             storage.setReactors(reader.readDB(storage.getReactorTypes()));
+            calculator.calculateFuelLoad(storage.getReactors());
+            System.out.println(storage.getReactors().get(64).getFuelLoad());
         } else {
             System.out.println("Сначала прочитайте типы реакторов!");
         }
