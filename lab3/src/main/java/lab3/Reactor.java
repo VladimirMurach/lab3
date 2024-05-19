@@ -1,5 +1,6 @@
 package lab3;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Reactor {
@@ -26,8 +27,8 @@ public class Reactor {
         return type;
     }
 
-    public void setType(ReactorType type) {
-        this.type = type;
+    public void setType(String type_name, ArrayList<ReactorType> reactorTypes) {
+        chooseType(type_name, reactorTypes);
     }
 
     public String getCountry() {
@@ -85,5 +86,30 @@ public class Reactor {
     public void setFuelLoad(Map<Integer, Double> fuelLoad) {
         this.fuelLoad = fuelLoad;
     }
-    
+
+    private void chooseType(String type_name, ArrayList<ReactorType> reactorTypes) {
+        switch (type_name) {
+            case "PWR" ->
+                findType(reactorTypes, "PWR");
+            case "PHWR" ->
+                findType(reactorTypes, "PHWR");
+            case "BWR" ->
+                findType(reactorTypes, "BWR");
+            case "LWGR" ->
+                findType(reactorTypes, "RBMK");
+            case "GCR" ->
+                findType(reactorTypes, "MAGNOX");
+            case "FBR" ->
+                findType(reactorTypes, "BN");
+        }
+    }
+
+    private void findType(ArrayList<ReactorType> reactorTypes, String typeName) {
+        for (ReactorType type : reactorTypes) {
+            if (typeName.equals(type.getType())) {
+                this.type = type;
+                break;
+            }
+        }
+    }
 }

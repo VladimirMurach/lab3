@@ -20,4 +20,13 @@ public class Manager {
     public ArrayList<ReactorType> getReactorTypes() {
         return storage.getReactorTypes();
     }
+
+    public void readDatabase() {
+        DatabaseReader reader = new DatabaseReader();
+        if (storage.getReactorTypes() != null) {
+            storage.setReactors(reader.readDB(storage.getReactorTypes()));
+        } else {
+            System.out.println("Сначала прочитайте типы реакторов!");
+        }
+    }
 }

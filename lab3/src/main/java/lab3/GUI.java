@@ -84,6 +84,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         databaseButton.setText("Database");
+        databaseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                databaseButtonActionPerformed(evt);
+            }
+        });
 
         regionButton.setText("Region");
 
@@ -155,6 +160,10 @@ public class GUI extends javax.swing.JFrame {
         model.setRoot(reactors);
         reactorTree.setModel(model);
     }//GEN-LAST:event_treeButtonActionPerformed
+
+    private void databaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseButtonActionPerformed
+        manager.readDatabase();
+    }//GEN-LAST:event_databaseButtonActionPerformed
 
     /**
      * @param args the command line arguments
