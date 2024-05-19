@@ -110,16 +110,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Region"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regionButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="countryButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Country"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="countryButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="operatorButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Operator"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="operatorButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

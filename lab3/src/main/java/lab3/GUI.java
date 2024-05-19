@@ -91,10 +91,25 @@ public class GUI extends javax.swing.JFrame {
         });
 
         regionButton.setText("Region");
+        regionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regionButtonActionPerformed(evt);
+            }
+        });
 
         countryButton.setText("Country");
+        countryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countryButtonActionPerformed(evt);
+            }
+        });
 
         operatorButton.setText("Operator");
+        operatorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                operatorButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,6 +179,18 @@ public class GUI extends javax.swing.JFrame {
     private void databaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseButtonActionPerformed
         manager.readDatabase();
     }//GEN-LAST:event_databaseButtonActionPerformed
+
+    private void regionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regionButtonActionPerformed
+        manager.aggregateByRegion();
+    }//GEN-LAST:event_regionButtonActionPerformed
+
+    private void countryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryButtonActionPerformed
+        manager.aggregateByCountry();
+    }//GEN-LAST:event_countryButtonActionPerformed
+
+    private void operatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operatorButtonActionPerformed
+        manager.aggregateByOperator();
+    }//GEN-LAST:event_operatorButtonActionPerformed
 
     /**
      * @param args the command line arguments

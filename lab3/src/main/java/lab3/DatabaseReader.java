@@ -21,11 +21,11 @@ public class DatabaseReader {
             String select = """
                             SELECT reactor.id, reactor_name, thermal_capacity, country_name, region_name, type_name, operator_name, owner_name
                             FROM reactor
-                            JOIN country ON country_id = country.id
-                            JOIN region ON region_id = region.id
-                            JOIN type ON type_id = type.id
-                            JOIN operator ON operator_id = operator.id
-                            JOIN owner ON owner_id = owner.id""";
+                            LEFT JOIN country ON country_id = country.id
+                            LEFT JOIN region ON region_id = region.id
+                            LEFT JOIN type ON type_id = type.id
+                            LEFT JOIN operator ON operator_id = operator.id
+                            LEFT JOIN owner ON owner_id = owner.id""";
             preparedStatement = connection.prepareStatement(select);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

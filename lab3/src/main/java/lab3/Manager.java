@@ -2,11 +2,13 @@ package lab3;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Manager {
 
     private Storage storage = new Storage();
     private Calculator calculator = new Calculator();
+    private Aggregator aggregator = new Aggregator();
 
     public void importFile(File file) {
 
@@ -30,6 +32,33 @@ public class Manager {
             System.out.println(storage.getReactors().get(64).getFuelLoad());
         } else {
             System.out.println("Сначала прочитайте типы реакторов!");
+        }
+    }
+
+    public Map<String, Map<Integer, Double>> aggregateByOperator() {
+        if (storage.getReactors() != null) {
+            return aggregator.aggregateByOperator(storage.getReactors());
+        } else {
+            System.out.println("Сначала прочитайте БД!");
+            return null;
+        }
+    }
+
+    public Map<String, Map<Integer, Double>> aggregateByCountry() {
+        if (storage.getReactors() != null) {
+            return aggregator.aggregateByCountry(storage.getReactors());
+        } else {
+            System.out.println("Сначала прочитайте БД!");
+            return null;
+        }
+    }
+
+    public Map<String, Map<Integer, Double>> aggregateByRegion() {
+        if (storage.getReactors() != null) {
+            return aggregator.aggregateByRegion(storage.getReactors());
+        } else {
+            System.out.println("Сначала прочитайте БД!");
+            return null;
         }
     }
 }
