@@ -102,6 +102,10 @@ public class Reactor {
                 findType(reactorTypes, "MAGNOX");
             case "FBR" ->
                 findType(reactorTypes, "BN");
+            case "RBMK" ->
+                findType(reactorTypes, "RBMK");
+            case "VVER" ->
+                findType(reactorTypes, "VVER-1200");
         }
     }
 
