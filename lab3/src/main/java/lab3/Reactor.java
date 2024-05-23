@@ -14,8 +14,17 @@ public class Reactor {
     private int thermalCapacity;
     private String region;
     private int shutdownYear;
+    private int connectionYear;
     private Map<Integer, Double> loadFactor;
     private Map<Integer, Double> fuelLoad = new HashMap<>();
+
+    public int getConnectionYear() {
+        return connectionYear;
+    }
+
+    public void setConnectionYear(int connectionYear) {
+        this.connectionYear = connectionYear;
+    }
 
     public String getName() {
         return name;

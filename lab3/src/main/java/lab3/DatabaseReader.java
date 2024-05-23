@@ -19,7 +19,7 @@ public class DatabaseReader {
         ArrayList<Reactor> reactors = new ArrayList<>();
         try {
             String select = """
-                            SELECT reactor.id, reactor_name, thermal_capacity, country_name, region_name, type_name, operator_name, owner_name, shutdown_date
+                            SELECT reactor.id, reactor_name, thermal_capacity, country_name, region_name, type_name, operator_name, owner_name, shutdown_date, connection_date
                             FROM reactor
                             LEFT JOIN country ON country_id = country.id
                             LEFT JOIN region ON region_id = region.id
@@ -38,6 +38,7 @@ public class DatabaseReader {
                 reactor.setThermalCapacity(resultSet.getInt("thermal_capacity"));
                 reactor.setType(resultSet.getString("type_name"), reactorTypes);
                 reactor.setShutdownYear(findYear(resultSet.getString("shutdown_date")));
+                reactor.setConnectionYear(findYear(resultSet.getString("connection_date")));
                 reactor.setLoadFactor(readLoadFactor(connection, resultSet.getInt("id")));
                 reactors.add(reactor);
             }
@@ -72,7 +73,7 @@ public class DatabaseReader {
         }
 
         Connection connection = null;
-        String url = "jdbc:postgresql://10.0.4.146:5432/reactors";
+        String url = "jdbc:postgresql://10.0.4.160:5432/reactors";
         String user = "postgres";
         String password = "1234";
 
