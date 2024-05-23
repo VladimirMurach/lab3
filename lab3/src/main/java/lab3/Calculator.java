@@ -12,6 +12,8 @@ public class Calculator {
                 double fuelLoad = 0;
                 if (reactor.getLoadFactor().containsKey(year)) {
                     fuelLoad = reactor.getThermalCapacity() * reactor.getLoadFactor().get(year) / 100 / reactor.getType().getBurnup();
+                } else if (reactor.getShutdownYear() >= year) {
+                    fuelLoad = reactor.getThermalCapacity() * 85 / 100 / reactor.getType().getBurnup();
                 }
                 reactor.getFuelLoad().put(year, fuelLoad);
                 year++;

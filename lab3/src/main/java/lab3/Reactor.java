@@ -13,6 +13,7 @@ public class Reactor {
     private String owner;
     private int thermalCapacity;
     private String region;
+    private int shutdownYear;
     private Map<Integer, Double> loadFactor;
     private Map<Integer, Double> fuelLoad = new HashMap<>();
 
@@ -86,6 +87,14 @@ public class Reactor {
 
     public void setFuelLoad(Map<Integer, Double> fuelLoad) {
         this.fuelLoad = fuelLoad;
+    }
+
+    public int getShutdownYear() {
+        return shutdownYear;
+    }
+
+    public void setShutdownYear(int shutdownYear) {
+        this.shutdownYear = shutdownYear;
     }
 
     private void chooseType(String type_name, ArrayList<ReactorType> reactorTypes) {

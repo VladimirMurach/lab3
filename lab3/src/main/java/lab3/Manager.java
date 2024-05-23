@@ -29,7 +29,6 @@ public class Manager {
         if (storage.getReactorTypes() != null) {
             storage.setReactors(reader.readDB(storage.getReactorTypes()));
             calculator.calculateFuelLoad(storage.getReactors());
-            System.out.println(storage.getReactors().get(64).getFuelLoad());
         } else {
             System.out.println("Сначала прочитайте типы реакторов!");
         }
